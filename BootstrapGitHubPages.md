@@ -20,7 +20,17 @@ I pushed my changes, but the page wouldn't load because it didn't have the prope
 
 Back in my template, I changed the jQuery version to match the one I just created.
 
-Pushed my changes after commenting out the section for Google Maps and everything works.  Now, to add background pictures to make the Parallax scrolling effect better...
+Pushed my changes and everything works.
+
+I chose to share the stupid website on my Google+ (which I subsequently deleted) in order to get access to the image files, though I could have manually scraped them from the page.
+
+To get the Google Maps functionality working, I had to get an [API key](Documentation/API)
+
+## Google Maps API Key
+AIzaSyBs7I0vYf1-pg_oMHI6G4E-ppI9Xp-kvgg
+
+content_copy
+
 
 ## Subdomains
 So I can even do subdomains on GitHub pages.  It's as simple as creating a folder, adding an 'index.html' file to it, and pushing the changes from within GitKraken, as the drag/drop feature of GitHub doesn't support folders :(
