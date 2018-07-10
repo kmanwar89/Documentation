@@ -2,7 +2,7 @@
 // @name         Finesse AutoReady2
 // @namespace    exconnect
 // @version      1.0
-// @description  Automatically go ready in Finesse, based on timers, BIG BOOTY BITCHES
+// @description  Automatically go ready in Finesse, based on timers
 // @author       Kadar Anwar
 // @match        http://fin-rtp-s01.cisco.com/desktop/container/?locale=en_US
 // @match        http://fin-rtp-s01.cisco.com/desktop/container/landing.jsp?locale=en_US
@@ -25,7 +25,7 @@ function ready() {
 	'use strict';
 
     // Wait 3 seconds before clicking on the menu
-    window.setTimeout(timer_menu, 5000);
+    window.setTimeout(timer_menu, 400);
 
     // Click on the Menu
     function timer_menu () {
@@ -33,7 +33,7 @@ function ready() {
     }
 
     // Wait 3 seconds before clicking on 'Ready'
-    window.setTimeout(timer_ready, 2000);
+    window.setTimeout(timer_ready, 400);
 
     // Click on Ready
     function timer_ready () {
