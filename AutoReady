@@ -1,0 +1,74 @@
+// ==UserScript==
+// @name         Finesse AutoReady2
+// @namespace    exconnect
+// @version      1.0
+// @description  Automatically go ready in Finesse, based on timers
+// @author       Kadar Anwar
+// @match        http://fin-rtp-s01.cisco.com/desktop/container/?locale=en_US
+// @match        http://fin-rtp-s01.cisco.com/desktop/container/landing.jsp?locale=en_US
+// @grant        none
+// @run-at       document-idle(new MutationObserver(check)).observe(document, {childList: true, subtree: true});
+// ==/UserScript==
+
+// Check for an element to begin running the script (ensures it is the correct page); otherwise, timeout after 100 seconds
+(function init(){
+	var counter = document.getElementById("state-btn");
+	if (counter) {
+		ready();
+	}
+	else {
+		setTimeout(init, 100);
+	}})();
+
+// Call a function to go ready
+function ready() {
+	'use strict';
+
+    // Wait 3 seconds before clicking on the menu
+    window.setTimeout(timer_menu, 5000);
+
+    // Click on the Menu
+    function timer_menu () {
+        document.getElementById("state-btn").click();
+    }
+
+    // Wait 3 seconds before clicking on 'Ready'
+    window.setTimeout(timer_ready, 2000);
+
+    // Click on Ready
+    function timer_ready () {
+        document.getElementById("state-READY").click();
+        alert('You are now Ready in Finesse');
+    }
+
+
+// Automatically go un-ready at exactly 3:00 PM EST
+
+    // the window reload function. you could of course do anything here
+    function forceLogout() {
+        document.getElementById("state-btn").click();
+        document.getElementById("link-NOT_READY6").click();
+        document.getElementById("signout-text").click();
+        document.getElementById("link-signout15").click();
+    }
+
+    // helper function to build up the desire time trigger
+    function forceLogoutGetTargetTime(hour,minute) {
+        var t = new Date();
+        t.setHours(hour);
+        t.setMinutes(minute);
+        t.setSeconds(0);
+        t.setMilliseconds(0);
+        return t;
+    }
+
+    // get your offset to wait value
+    var timetarget = forceLogoutGetTargetTime(11,47).getTime();
+    var timenow = new Date().getTime();
+    var offsetmilliseconds = timetarget - timenow;
+
+    //if it isn't 3PM yet, set a timeout.
+    if (offsetmilliseconds = 0){
+        setTimeout(function(){forceLogout();}, offsetmilliseconds);
+    }
+}
